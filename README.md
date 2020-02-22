@@ -21,7 +21,7 @@ Try out some examples:
 library(shiny)
 
 app_file <- system.file("example", "shiny", "single_question", "app.R", package = "riddlr")
-shinyAppFile(appR)
+shinyAppFile(app_file)
 ```
 
 ### Rendering a searchable question catalog shiny app
@@ -30,7 +30,7 @@ shinyAppFile(appR)
 library(shiny)
 
 app_file <- system.file("example", "shiny", "question_catalog", "app.R", package = "riddlr")
-shinyAppFile(appR)
+shinyAppFile(app_file)
 ```
 
 ## Community Shout-outs
