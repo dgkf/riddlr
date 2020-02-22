@@ -1,0 +1,96 @@
+---
+title: "Unit Conversions"
+# author: "Your Name" # Optionally take some credit for submitting a question!
+difficulty: 0.3
+tags:
+  - vectors
+details: >
+  Convert a timespan in years to more human-readable timespans
+---
+
+
+# Question
+
+You're given a numeric vector of ages in years for people ranging from just a
+few seconds old to nearly 100 years old. For printing, you would prefer to use
+the largest unit for which the age rounds down to a positive integer (e.g. **"33
+mins old"** instead of **"6.46e-5 years old"**). Additionally, you want to
+indicate a plural unit when the next lowest positive integer is greater than 1.
+
+For unit conversions, a numeric vector, `conversions`, has been provided to
+convert from years according to the following conversions:
+
+```{}
+conversions <- c(
+  year  = 1,                #  1 year  =  1 year
+  month = 365.25/30.5,      #  1 year  =  365.25 days
+  week  = 365.25/7,         #  1 week  =  7 days
+  day   = 365.25,           #  1 month =  30.5 days
+  hour  = 365.25*24,        #  1 day   =  24 hours
+  min   = 365.25*24*60,     #  1 hour  =  60 mins
+  sec   = 365.25*24*60*60)  #  1 min   =  60 secs
+```
+
+For example, given the following ages in years
+
+```{}
+ages <- c(0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10)
+```
+
+Your resulting character vector would be 
+
+```{}
+c("31 secs old", "5 mins old", "52 mins old", "8 hours old", "3 days old", 
+    "1 month old", "1 year old", "10 years old")
+```
+
+
+
+
+```{r grader}
+conversions <- c(
+  year = 1, 
+  month = 365.25/30.5,
+  week = 365.25/7,
+  day = 365.25,
+  hour = 365.25*24,
+  min = 365.25*24*60,
+  sec = 365.25*24*60*60)
+
+test_inputs <- list(
+  list(conversions = conversions,
+    ages = c(0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10)),
+  # test example input
+  list(conversions = conversions, 
+    ages = 1*10 ^ (-6:1)),
+  # test random input
+  list(conversions = conversions, 
+    ages = 1*10 ^ runif(5, min = -6, max = 2)),
+  # test case len(ages) == 1
+  list(conversions = conversions, 
+    ages = 1*10 ^ runif(1, min = -6, max = 2)),
+  # test long input
+  list(conversions = conversions, 
+    ages = 1*10 ^ runif(5000, min = -6, max = 2)))
+
+list(
+  test_inputs = test_inputs,
+  test_timeouts = 0.1,
+  solution = quote({
+    m <- floor(ifelse((m <- ages %*% t(conversions)) >= 1, m, NA))
+    i <- apply(m, 1, Position, f = Negate(is.na))
+    v <- setNames(Map("[", split(m, row(m)), i), colnames(m)[i])
+    paste0(v, " ", names(v), ifelse(v>1, "s", ""), " old")
+  }),
+  quoted = TRUE)
+```
+
+```{r starter, eval = FALSE}
+# already in environment:
+#   ages (numeric vector; 0.000001 <= value <= 100; 1 <= length <= 10,000)
+#   conversions (named numeric vector of unit conversions [n/year])
+
+print(ages)
+print(round(conversions))
+```
+

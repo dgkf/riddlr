@@ -1,0 +1,57 @@
+---
+title: "Dealing with Filenames"
+# author: "Your Name" # Optionally take some credit for submitting a question!
+difficulty: 0.1
+tags:
+  - filesystem
+  - tools
+details: >
+  Handle filepaths to get the name of a file without the trailing extension
+---
+
+
+Given a character vector of filepaths (such as `/home/id/project/analysis.R`),
+return the name of the filename without the file extension.
+
+For example, if given the vector
+
+```{}
+filepaths <- c("/home/id/project/analysis.R", "/home/id/project/report.Rmd")
+```
+
+The answer would be
+
+```{}
+c("analysis", "report")
+```
+
+
+
+```{r grader}
+library(tools)
+
+test_inputs <- list(
+  list(filepaths = c(
+    "/home/id/project/analysis.R",
+    "/home/id/project/report.Rmd")),
+  list(filepaths = c(
+    "/home/id/project/analysis.R",
+    "/home/id/project/analysis.knit.Rmd",
+    "/home/id/project/.Rprofile")))
+
+list(
+  test_inputs = test_inputs,
+  test_timeouts = 0.1,
+  solution = quote(tools::file_path_sans_ext(basename(filepaths))),
+  quoted = TRUE)
+```
+
+```{r starter, eval = FALSE}
+# already in environment:
+#   tools package is available to use
+#   filepaths (a character vector of filepaths, 1 <= length <= 10)
+
+library(tools)
+
+print(filepaths)
+```

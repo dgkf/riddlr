@@ -1,0 +1,86 @@
+---
+title: "Comparing Vectors"
+# author: "Your Name" # Optionally take some credit for submitting a question!
+difficulty: 0.1
+tags: 
+  - vectors
+details: >
+  Filter vectors for mismatched values
+instructions: >
+  This document can be used as a template 'riddle' input. 
+  
+  There are two meaningfully named code chunks, 'grader' and 'starter'. 
+    - grader is used to produce a argument list which will be provided to
+      riddlr::grade_riddle. For more details about viable arguments see
+      ?riddlr::grade_riddle.
+    - starter is used to prepopulate the code block in the riddle ui.
+    - everything else is used to populate the challenge instructions.
+    - you can double check that everything will run by trying to run
+      `parse_riddlr_rmd('path/to/your.riddlr.Rmd')`
+  
+  A good riddle should be prescriptive in scope with little to no room for
+  interpretation. It's best if an example of a trivial case is provided, and
+  that the trivial case is also used as your first test case.
+---
+
+
+
+You're given two numeric vectors, `a` and `b`. `b` is identical to `a`, except
+that two numbers have been swapped. Return a numeric vector of length 2
+containing the values of the two swapped numbers in increasing order.
+
+For example, with the following input
+
+```{}
+a <- c(1, 1, 2, 3, 5, 8, 13, 21, 34, 55)
+b <- c(1, 1, 13, 3, 5, 8, 2, 21, 34, 55)
+```
+
+The answer would be
+
+```{}
+c(2, 13)
+```
+
+
+
+```{r grader}
+# a code chunk named 'grader' should produce a list of arguments to use with the
+# grade_riddle function. 
+#
+# One note, this is expected to be run in the topenv() upon riddlr attach,
+# meaning that you should only expect that the standard library is available
+#
+# TODO: 
+#   - allow for `library()` calls within grader functions to extend to new
+#     packages
+# 
+
+generate_test_input <- function(a) {
+  swap_indxs <- sample(1:length(a), 2, replace = FALSE)
+  b <- a
+  b[swap_indxs] <- b[rev(swap_indxs)]
+  list(a = a, b = b)
+}
+
+list(
+  test_inputs = list(
+    list(
+      a = c(1, 1, 2, 3, 5, 8, 13, 21, 34, 55),
+      b = c(1, 1, 13, 3, 5, 8, 2, 21, 34, 55)),
+    generate_test_input(1:10),
+    generate_test_input(10:1),
+    generate_test_input(runif(100, -50, 50))),
+  test_timeouts = 0.5,
+  solution = quote(sort(a[a != b])),
+  quoted = TRUE)
+```
+
+```{r starter, eval = FALSE}
+# already in environment:
+#   a (numeric vector, 1 <= length <= 10,000)
+#   b (numeric vector, 1 <= length <= 10,000)
+
+print(a)
+print(b)
+```

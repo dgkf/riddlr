@@ -1,0 +1,31 @@
+.riddlr-run-btns {
+  float: right;
+}
+
+/*
+#riddlr_submit {
+  background: rgb(24,188,156);
+  border: 0 solid;
+}
+*/
+
+.alert {
+  border-radius: 0;
+}
+
+.riddlr-alert code {
+  background: none;
+}
+
+.riddlr-alert pre {
+  /* color: white; */
+  border: 0 solid;
+  background-color: #555;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+pre {
+  border: #222;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+}

@@ -1,0 +1,26 @@
+Type: Package
+Package: riddlr
+Title: A package for building interactive programming challenges
+Version: 0.0.1
+Authors@R: 
+    person(given = "Doug",
+           family = "Kelkhoff",
+           role = c("aut", "cre"),
+           email = "doug.kelkhoff@gmail.com")
+Description: A package for building interactive programming
+    challenges
+License: MIT
+BugReports: https://github.roche.com/kelkhofd/riddlr
+Imports:
+    utils,
+    shiny,
+    shinyAce,
+    rmarkdown,
+    markdown,
+    memoise,
+    yaml
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.0.2
