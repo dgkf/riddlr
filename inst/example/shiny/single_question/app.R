@@ -1,7 +1,7 @@
-library(shiny)
 library(riddlr)
-library(markdown)
+library(shiny)
 library(shinyAce)
+library(markdown)
 
 # ensure interactive console width won't affect output
 options(width = 80)
@@ -13,7 +13,6 @@ r <- parse_riddlr_rmd(system.file(
   package = "riddlr"))
 
 ui <- fluidPage(
-  theme = shinytheme(theme = 'cosmo'),
   riddle_ui("riddle",
     question_ui = r$prompt,
     metadata = r$metadata))

@@ -1,19 +1,29 @@
-.libPaths(c("./.lib", .libPaths()))
-
-# devtools::install_github("dgkf/shinyAce", ref = "dev")
-library(shiny)
-library(shinythemes)
-library(shinydashboard)
-library(shinycssloaders)
-library(markdown)
-library(shinyAce)
-
-library(dplyr)
 library(riddlr)
-library(tibble)
-library(purrr)
-library(tidyr)
-library(DT)
+library(shiny)
+
+deps <- c(
+  "shinythemes",
+  "shinydashboard",
+  "shinycssloaders",
+  "shinyAce",
+  "DT",
+  "dplyr",
+  "tibble",
+  "purrr",
+  "tidyr"
+)
+
+loaded <- vapply(deps, FUN.VALUE = logical(1L), function(dep) tryCatch(
+  require(dep, character.only = TRUE, quietly = TRUE, ),
+  error = function(e) FALSE,
+  warning = function(e) FALSE
+))
+
+if (!all(loaded))
+  stop(call. = FALSE, paste0(
+    "This demo app requires additional packages: ",
+    paste0("'", deps[!loaded], "'", collapse = ", ")
+  ))
 
 # ensure interactive console width won't affect output
 options(width = 80)
