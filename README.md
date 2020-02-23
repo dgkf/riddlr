@@ -1,4 +1,4 @@
-# riddlr
+# riddlr  <a href='https://github.com/dgkf/riddlr'><img src='assets/hex-riddlr.png' align="right" height="139" /></a>
 
 A package for making coding challenges, largely inspired by the 
 [`learnr`](https://github.com/rstudio/learnr) package.
