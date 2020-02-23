@@ -10,7 +10,7 @@ Authors@R:
 Description: A package for building interactive programming
     challenges
 License: MIT
-BugReports: https://github.roche.com/kelkhofd/riddlr
+BugReports: https://github.com/dgkf/riddlr
 Imports:
     utils,
     shiny,
