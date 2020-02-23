@@ -1,4 +1,4 @@
-# riddlr
+# riddlr  <a href='https://github.com/dgkf/riddlr'><img src='assets/hex-riddlr.png' align="right" height="139" /></a>
 
 A package for making coding challenges, largely inspired by the 
 [`learnr`](https://github.com/rstudio/learnr) package.
@@ -61,6 +61,7 @@ added internally as part of the proof-of-concept, but were later [contributed
 back](https://github.com/trestletech/shinyAce/pull/66) to the `shinyAce`
 package.
 
-A huge thank you goes out to @vnijs and @detule for giving great feedback on
-such a large body of new features and diligently checking many edge cases that
-would have gone unaddressed.
+A huge thank you goes out to [**@vnijs**](https://github.com/vnijs) and 
+[**@detule**](https://github.com/detule) for giving great feedback on
+such a large body of new features and diligently checking many edge cases 
+that would have gone unaddressed.
