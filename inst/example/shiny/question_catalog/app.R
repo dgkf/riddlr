@@ -22,7 +22,7 @@ catalog <- system.file("example", "questions", package = "riddlr") %>%
   lapply(new_tibble, nrow = 1) %>%
   enframe() %>%
   mutate(value = map(value, . %>% mutate(tags = paste(tags, collapse = "; ")))) %>%
-  unnest("value") %>%
+  unnest(value) %>%
   select(difficulty, title, details, tags, filepath)
 
 ui <- dashboardPage(
