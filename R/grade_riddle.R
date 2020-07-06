@@ -298,7 +298,7 @@ grace_timeouts_response <- function(user_output, solution_output, input_env,
     test_i, test_n, time_frac) {
 
   list(
-    message = ssf(paste0(
+    message = sprintf(paste0(
         "Sorry, although your solution was correct, your code ",
         "took too long to run on one of ",
         "the test cases (%s of %s). Your code took **%.2fx** the ",
