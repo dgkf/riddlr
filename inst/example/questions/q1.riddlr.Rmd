@@ -45,17 +45,10 @@ c(2, 13)
 
 
 ```{r grader}
+# 
 # a code chunk named 'grader' should produce a list of arguments to use with the
 # grade_riddle function. 
-#
-# One note, this is expected to be run in the topenv() upon riddlr attach,
-# meaning that you should only expect that the standard library is available
-#
-# TODO: 
-#   - allow for `library()` calls within grader functions to extend to new
-#     packages
 # 
-
 generate_test_input <- function(a) {
   swap_indxs <- sample(1:length(a), 2, replace = FALSE)
   b <- a
