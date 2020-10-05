@@ -1,0 +1,99 @@
+---
+title: "Renaming dataframe columns"
+# author: "Your Name" # Optionally take some credit for submitting a question!
+difficulty: 0.1
+tags: 
+  - dataframes
+details: >
+  Give a dataframe meaningul column names
+editor_options: 
+  chunk_output_type: console
+---
+
+You're provided with a data frame, `df`, containing important data. However, the column names are generic and provide no clue as to the variable. You have a vector of strings that provide meaningful column names, `helpful_column_names`. Replace the column names of data frame `df` with the vector `helpful_column_names`.
+
+For example, with the following input
+
+```{}
+
+    df = data.frame(
+      a = c(10, 12, 14),
+      b = c(2, 6, 8),
+      c = c(5, 7, 9)
+    )
+    
+    helpful_column_names = c("width", "length", "height")
+
+```
+
+The answer would be
+
+```{}
+
+  width length height
+1    10      2      5
+2    12      6      7
+3    14      8      9
+
+```
+
+
+
+```{r grader}
+# 
+# a code chunk named 'grader' should produce a list of arguments to use with the
+# grade_riddle function. 
+# 
+
+list(
+  test_inputs = list(
+    list(
+      df = data.frame(
+        a = c(10, 12, 14),
+        b = c(2, 6, 8),
+        c = c(5, 7, 9)
+      ),
+      helpful_column_names = c("width", "length", "height")
+    ),
+    list(
+      df = data.frame(
+        a = c(3, 4),
+        b = c(5, 6)
+      ),
+      helpful_column_names = c("size", "weight")
+    ),
+    list(
+      df = data.frame(
+        a = seq(1, 5, 1),
+        b = seq(2, 10, 2),
+        c = seq(10, 50, 10),
+        d = seq(1, 5, 1),
+        e = seq(2, 10, 2)
+      ),
+      helpful_column_names = c("size", "weight", "height", "depth", "z-axis")
+    )
+  ),
+  test_timeouts = 0.1,
+  solution = quote({
+    colnames(df) = helpful_column_names
+    print(df)
+    }),
+  quoted = TRUE)
+
+
+```
+
+```{r starter, eval = FALSE}
+# already in environment:
+#   df (data frame, n x n dimensions; n integer vector 0 < value <= 5)
+#   helpful_column_names (a character vector of strings, 1 <= length <= 5)
+#
+# HINT: Don't forget to use the print(df) command at the end of your script 
+# to output the data frame for grading.
+
+
+print(df)
+
+print(helpful_column_names)
+
+```
