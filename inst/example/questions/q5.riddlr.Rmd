@@ -1,0 +1,65 @@
+---
+title: "Finding String Matches"
+# author: "Your Name" # Optionally take some credit for submitting a question!
+difficulty: 0.2
+tags: 
+  - strings
+details: >
+  Find matches of an entire word within a vector of strings
+---
+
+
+
+You're given a vector of strings and a keyword. Return a vector containing only the strings that contained the keyword as a whole word (not as part of a word).
+
+For example, with the following input
+
+```{}
+strings <- c("podcast","castle","cast off","plaster cast")
+keyword <- "cast"
+```
+
+The answer would be
+
+```{}
+c("cast off", "plaster cast")
+```
+
+
+
+```{r grader}
+# 
+# a code chunk named 'grader' should produce a list of arguments to use with the
+# grade_riddle function. 
+# 
+
+list(
+  test_inputs = list(
+    list(
+      strings = c("code red","decode","coding is fun"),
+      keyword = "code"
+    ),
+    list(
+      strings = c("sawyer","chain saw","I saw you yesterday."),
+      keyword = "saw"
+    ),
+    list(
+      strings = c("robotics","build a robot","robots are taking over"),
+      keyword = "robot"
+    )
+  ),
+  test_timeouts = 0.1,
+  solution = quote({
+    strings[grepl(paste0("\\b",keyword,"\\b"),strings, ignore.case = TRUE)]
+    }),
+  quoted = TRUE)
+```
+
+```{r starter, eval = FALSE}
+# already in environment:
+#   strings (a character vector of strings, 1 < length <= 10)
+#   keyword (a string)
+
+print(strings)
+print(keyword)
+```
