@@ -4,7 +4,9 @@
 \name{riddlr_base_env}
 \alias{riddlr_base_env}
 \title{Build a base environment for solutions to be evaluated within}
-\format{An object of class \code{environment} of length 0.}
+\format{
+An object of class \code{environment} of length 0.
+}
 \usage{
 riddlr_base_env
 }

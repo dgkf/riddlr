@@ -4,7 +4,9 @@
 \name{timeout_error_cpu}
 \alias{timeout_error_cpu}
 \title{compute a timeout error from setTimeLimit}
-\format{An object of class \code{NULL} of length 0.}
+\format{
+An object of class \code{NULL} of length 0.
+}
 \usage{
 timeout_error_cpu
 }
